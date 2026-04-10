@@ -1,6 +1,11 @@
 # connect to iotroam network and get an url
+#
+# this example is used in this tutorial:
+# https://home.et.utwente.nl/slootenvanf/2025/09/03/connect-to-wi-fi-raspberry-pi-pico-w/
+#
 # in this example we use an online service to read and write variables or data in a simple way
-# more info: https://home.et.utwente.nl/val/?help
+# more info:
+# https://home.et.utwente.nl/val/?help
 
 from time import sleep
 import network
@@ -11,7 +16,7 @@ import ubinascii
 # Wi-Fi credentials (change these to reflect your Wifi credentials!)
 # For the UT iotroam network, use 'iotroam' for the ssid, get the password from Canvas
 ssid = 'iotroam'
-password = '*************'
+password = '****************'
 
 # base URL
 base_url = 'https://home.et.utwente.nl/val/check'
