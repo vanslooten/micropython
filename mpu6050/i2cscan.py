@@ -1,4 +1,4 @@
-# scan for I2C devices and read the Part ID register to identify the sensor variant
+# Scan for an MPU6050 and read its WHO_AM_I register.
 
 from machine import Pin, I2C
 
@@ -8,18 +8,19 @@ print("Starting I2C scan...")
 scan_results = i2c.scan()
 print(scan_results)
 
-I2C_ADDR = 0x57
-REG_PART_ID = 0xFF
+MPU6050_ADDRESSES = (0x68, 0x69)
+WHO_AM_I_REGISTER = 0x75
+EXPECTED_WHO_AM_I = 0x68
 
-# determine the sensor address by getting the result of the I2C scan
-for addr in scan_results:
-    print(f"Device found at I2C address: {hex(addr)}")
-    I2C_ADDR = addr
-
-print(f"Using I2C address: {hex(I2C_ADDR)} to read Part ID...")
-
-# Read 1 byte from the Part ID register (0xFF)
-part_id_bytes = i2c.readfrom_mem(I2C_ADDR, REG_PART_ID, 1)
-part_id = part_id_bytes[0]
-
-print(f"Part ID read: {hex(part_id)}")
+mpu_addresses = [addr for addr in scan_results if addr in MPU6050_ADDRESSES]
+if not mpu_addresses:
+    print("No MPU6050 found at 0x68 or 0x69.")
+else:
+    for address in mpu_addresses:
+        who_am_i = i2c.readfrom_mem(address, WHO_AM_I_REGISTER, 1)[0]
+        print(f"MPU6050 address: {hex(address)}")
+        print(f"WHO_AM_I: {hex(who_am_i)}")
+        if who_am_i == EXPECTED_WHO_AM_I:
+            print("MPU6050 identity confirmed.")
+        else:
+            print("Unexpected WHO_AM_I value; check the sensor type or wiring.")
