@@ -1,6 +1,7 @@
 Code created from tutorial at\
-https://www.instructables.com/How-to-Use-MPU6050-With-Raspberry-Pi-Pico-or-Pico-/\
-but code uses different pins! see warning below. so wire the sensor to GP10 and GP11.
+https://www.instructables.com/How-to-Use-MPU6050-With-Raspberry-Pi-Pico-or-Pico-/
+
+But code uses different pins! see warning below. so wire the sensor to GP10 and GP11.
 
 This project needs two library files:
 https://github.com/shillehbean/youtube-channel/blob/main/vector3d.py\
