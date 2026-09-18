@@ -3,9 +3,9 @@ https://www.instructables.com/How-to-Use-MPU6050-With-Raspberry-Pi-Pico-or-Pico-
 
 But code uses different pins! see warning below. so wire the sensor to GP10 and GP11.
 
-This project needs two library files:
-https://github.com/shillehbean/youtube-channel/blob/main/vector3d.py\
-https://github.com/shillehbean/youtube-channel/blob/main/imu.py\
+This project needs two library files:\
+https://github.com/shillehbean/youtube-channel/blob/main/vector3d.py
+https://github.com/shillehbean/youtube-channel/blob/main/imu.py
 which you should save in the 'lib' folder.
 
 Do not forget to upload the entire project to the Pico before running any of the scripts.
