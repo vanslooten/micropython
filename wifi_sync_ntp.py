@@ -1,22 +1,24 @@
-# connect to iotroam network and get an url
+# connect to iotroam network and sync time
 #
 # this example is used in this tutorial:
 # https://home.et.utwente.nl/slootenvanf/2025/09/03/connect-to-wi-fi-raspberry-pi-pico-w/
 #
-# in this example we use an online service to read and write variables or data in a simple way
-# more info:
-# https://home.et.utwente.nl/val/?help
+# sync time code based on:
+# https://www.picademie.nl/index.php/2025/02/22/de-juiste-tijd-met-ntp-pico-w/
 
-from time import sleep
+import time
+import ntptime
+import machine
 import network
 import requests
 import random
 import ubinascii
 
+
 # Wi-Fi credentials (change these to reflect your Wifi credentials!)
 # For the UT iotroam network, use 'iotroam' for the ssid, for the password, see the tutorial
 ssid = 'iotroam'
-password = '**************'
+password = '***********'
 
 # base URL
 base_url = 'https://home.et.utwente.nl/val/check'
@@ -47,7 +49,7 @@ while connection_timeout > 0:
         break # break from the loop
     connection_timeout -= 1
     print("Waiting for Wi-Fi connection... (", status, ")")
-    sleep(1)
+    time.sleep(1)
 
 # Check if connection is successful
 if wlan.status() != 3:
@@ -58,24 +60,26 @@ else:
     network_info = wlan.ifconfig()
     print('IP address:', network_info[0])
 
-# proceed with requesting a webpage
+# connect to time server and setup the RTC
+
+rtc = machine.RTC()
+
+rtc.datetime((2000, 1, 1, 0, 0, 0, 00, 0))
+print(time.localtime())
+
+ntptime.settime()
+time.sleep(2)
+
+dstadjust = 2 # adjust for summer time (DST) if needed, eg. by using the value 1 for summer time, and 0 for winter time.
+    # This is a simple example, in practice you would need to check the date and adjust accordingly.
 
 while True:
-  try:
-    # generate a value to store, as an example a random number between 0-40:
-    value = random.randint(0,40)
-    # make request url to store the value online:
-    url = request_url + str(value)
-    print('Sending request: ', url)
-    response = requests.get(url)
-    # Get response code
-    response_code = response.status_code
-    # Get response content
-    response_content = response.content
-
-    # Print results
-    print('Response code: ', response_code)
-    print('Response content:', response_content)
-  except OSError as e:
-    print('Failed send values to website (check Wifi connection?).')
-  sleep(60)
+    print ("Year   = ", time.localtime()[0])
+    print ("Month  = ", time.localtime()[1])
+    print ("Day    = ", time.localtime()[2])
+    hour = time.localtime()[3]
+    hour = hour + dstadjust
+    print ("Hour   = ", hour)
+    print ("Minute = ", time.localtime()[4])
+    print ("===============")
+    time.sleep(10)
