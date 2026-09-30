@@ -4,6 +4,10 @@
 # https://randomnerdtutorials.com/getting-started-raspberry-pi-pico-w/#install-thonny-ide
 # Set sensor (line 10-11), check/alter pin
 #
+# This script needs the dht library, which is included in MicroPython.
+# you can verify that by running the following command in the REPL:
+# help('modules')
+#
 # related:
 # Wifi, webserver:
 # https://circuitdigest.com/microcontroller-projects/temperature-and-humidity-monitoring-webserver-with-raspberry-pi-pico-w-and-dht11-sensor

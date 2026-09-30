@@ -1,4 +1,5 @@
-Example of use with driver of a DHT11 sensor with the Raspberry Pi Pico.
+Example of use of a DHT11 sensor with the Raspberry Pi Pico.
 
-Based on version for Raspberry Pi on\
-https://github.com/szazo/DHT11_Python/
+This script needs the dht library, which is included in MicroPython.\
+you can verify that by running the following command in the REPL:\
+help('modules')
