@@ -17,7 +17,7 @@
 
 import machine
 from time import sleep
-import dht 
+import dht
 from ssd1306 import SSD1306_I2C
 
 # for regular Pico:

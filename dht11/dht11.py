@@ -12,16 +12,21 @@
 # https://www.makeuseof.com/raspberry-pi-pico-w-read-sensor-using-bluetooth/
 # https://electrocredible.com/raspberry-pi-pico-w-bluetooth-ble-micropython/
 
+
 from machine import Pin
 from time import sleep
-import dht 
+
+# standard library, included in MicroPython:
+#from dht import DHT11 
+# alternative: use the DHT11 class from the lib/dht11 folder, which is a modified version of the original dht library
+from lib.dht11 import DHT11
 
 # Intialize DHT11 sensor, change pin if needed, here we use GP16
-sensor = dht.DHT11(Pin(16))
+sensor = DHT11(Pin(16))
 
 while True:
   try:
-    sleep(2)
+    sleep(1)
     sensor.measure()
     temp = sensor.temperature()
     hum = sensor.humidity()
@@ -30,4 +35,4 @@ while True:
     print('Temperature: %3.1f F' %temp_f)
     print('Humidity: %3.1f %%' %hum)
   except OSError as e:
-    print('Failed to read sensor.')
+    print('Failed to read sensor:', e) # print error message with exception details
