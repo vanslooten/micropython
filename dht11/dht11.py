@@ -1,8 +1,5 @@
 # Complete project details at
 #  https://RandomNerdTutorials.com/raspberry-pi-pico-dht11-dht22-micropython/
-# Install CircuitPython:
-# https://randomnerdtutorials.com/getting-started-raspberry-pi-pico-w/#install-thonny-ide
-# Set sensor (line 10-11), check/alter pin
 #
 # This script needs the dht library, which is included in MicroPython.
 # you can verify that by running the following command in the REPL:
