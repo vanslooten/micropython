@@ -5,7 +5,8 @@ you can verify that by running the following command in the REPL (run it in the 
 ```
 help('modules')
 ```
-In case a library is not present, you may use the version in the lib folder.
+In case a library is not present, you may use the version in the lib folder.\
+See comments in dht11.py how to do that.
 
 **main.py**\
 Combined version that displays the values on an SSD1306 OLED screen.

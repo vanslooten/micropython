@@ -17,9 +17,9 @@ from machine import Pin
 from time import sleep
 
 # standard library, included in MicroPython:
-#from dht import DHT11 
+from dht import DHT11 
 # alternative: use the DHT11 class from the lib/dht11 folder, which is a modified version of the original dht library
-from lib.dht11 import DHT11
+#from lib.dht11 import DHT11
 
 # Intialize DHT11 sensor, change pin if needed, here we use GP16
 sensor = DHT11(Pin(16))
