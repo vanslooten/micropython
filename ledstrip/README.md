@@ -1,5 +1,5 @@
-##Ledstrip examples for MicroPython.
-This example is based on an example tutorial that you can find here:\
+## Ledstrip examples for MicroPython
+This example is based on a tutorial that you can find here:\
 https://theorycircuit.com/raspberry-pi-pico-projects/interfacing-ws2812b-neopixel-led-strip-with-raspberry-pi-pico/ \
 Use that also if you need a wiring diagram.\
 The Data pin of the LEDstrip must be connected to GP6.
